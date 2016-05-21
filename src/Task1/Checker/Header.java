@@ -5,14 +5,14 @@ import java.util.ArrayList;
 /**
  * Created by izban on 21.05.2016.
  */
-class Header {
+public class Header {
     ArrayList<String> assumptions;
     private String toProve;
 
     Header() {}
-    Header(String s) {
+    public Header(String s) {
         s = s + ",";
-        String cur = "";
+        StringBuilder cur = new StringBuilder();
         assumptions = new ArrayList<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -21,10 +21,13 @@ class Header {
             }
             if (c == ',' || c == '|' && s.charAt(i + 1) == '-') {
                 if (i + 1 == s.length()) {
-                    toProve = s;
+                    toProve = cur.toString();
                 } else {
-                    assumptions.add(s);
+                    assumptions.add(cur.toString());
                 }
+                cur = new StringBuilder();
+            } else {
+                cur.append(c);
             }
         }
     }
