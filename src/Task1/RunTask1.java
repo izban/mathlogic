@@ -7,9 +7,7 @@ import Task1.Checker.Output;
 import Util.Files.FileWalker;
 
 import java.io.*;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
+
 
 import static Util.Files.FileWalker.curFile;
 

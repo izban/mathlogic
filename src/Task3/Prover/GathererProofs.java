@@ -1,5 +1,8 @@
 package Task3.Prover;
 
+import Task1.Checker.Checker;
+import Task1.Checker.Header;
+import Task1.Checker.Input;
 import Util.Files.FileWalker;
 import Util.Tree.Node;
 
@@ -43,6 +46,12 @@ public class GathererProofs {
                         }
                         proofs.get(name).add(a.get(i++));
                     }
+                    Input input = new Input();
+                    if (name.contains("|-")) {
+                        input.header = new Header(name);
+                    }
+                    input.a = proofs.get(name);
+                    assert new Checker().check(input).ok;
                 }
                 return null;
             });
