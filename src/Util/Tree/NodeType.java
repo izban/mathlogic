@@ -3,7 +3,7 @@ package Util.Tree;
 /**
  * Created by izban on 21.05.2016.
  */
-enum NodeType {
+public enum NodeType {
     IMPL {
         @Override
         public String toString() {

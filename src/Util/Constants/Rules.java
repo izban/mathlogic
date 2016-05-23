@@ -9,15 +9,15 @@ import static Util.Constants.StringConstants.*;
  */
 public class Rules {
     public static String axiom(int id) {
-        return axiomes + id;
+        return AXIOMES + id;
     }
 
     public static String hypothesis() {
-        return hypothesis;
+        return HYPOTHESIS;
     }
 
     public static String notProved() {
-        return notProved;
+        return NOTPROVED;
     }
 
     public static Pair<Integer, Integer> unMP(String s) {

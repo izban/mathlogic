@@ -38,7 +38,7 @@ public class Parser {
             Token cur = Token.type(lexer.curToken());
             if (cur == Token.AND) {
                 lexer.nextToken();
-                res = new NodeAnd(res, parseDisjunction());
+                res = new NodeAnd(res, parseConjunction());
                 continue;
             }
             break;

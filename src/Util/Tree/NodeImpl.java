@@ -9,6 +9,11 @@ public class NodeImpl extends NodeBinary {
     }
 
     @Override
+    protected boolean f(boolean a, boolean b) {
+        return !a || b;
+    }
+
+    @Override
     public NodeType type() {
         return NodeType.IMPL;
     }

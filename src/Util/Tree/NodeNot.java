@@ -9,6 +9,11 @@ public class NodeNot extends NodeUnary {
     }
 
     @Override
+    protected boolean f(boolean a) {
+        return !a;
+    }
+
+    @Override
     public NodeType type() {
         return NodeType.NOT;
     }

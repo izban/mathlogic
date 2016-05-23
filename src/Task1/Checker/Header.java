@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * Created by izban on 21.05.2016.
  */
 public class Header {
-    public ArrayList<String> assumptions;
-    public String toProve;
+    public ArrayList<String> assumptions = new ArrayList<>();
+    public String toProve = "";
 
-    Header() {}
+    public Header() {}
     public Header(String s) {
         s = s + ",";
         StringBuilder cur = new StringBuilder();

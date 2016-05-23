@@ -2,6 +2,7 @@ package Util.Tree;
 
 import Util.Hash.Hash;
 import Util.Parser.Parser;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 
@@ -47,4 +48,6 @@ public abstract class Node {
     private int hash() {
         return h;
     }
+
+    public abstract boolean calcValue(boolean... a);
 }

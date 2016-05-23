@@ -3,7 +3,7 @@ package Util.Tree;
 /**
  * Created by izban on 21.05.2016.
  */
-abstract class NodeUnary extends Node {
+public abstract class NodeUnary extends Node {
     public NodeUnary() {}
 
     NodeUnary(Node l) {
@@ -14,6 +14,12 @@ abstract class NodeUnary extends Node {
 
     @Override
     public String toString() {
-        return type().toString() + children[0].toString();
+        return type().toString() + "(" + children[0].toString() + ")";
+    }
+
+    protected abstract boolean f(boolean a);
+
+    public boolean calcValue(boolean... a) {
+        return f(a[0]);
     }
 }

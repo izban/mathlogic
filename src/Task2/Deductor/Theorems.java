@@ -20,13 +20,20 @@ public class Theorems {
         return ExpressionFormatter.format(s, a);
     }
 
-    static public void addAToA(HashSet<Node> was, Input _res, Node a) {
-        Consumer<String> add = s -> {
+    static Consumer<String> makeAdd(HashSet<Node> was, Input _res) {
+        return s -> {
+            if (!_res.a.isEmpty() && _res.header.toProve.equals(_res.a.get(_res.a.size() - 1))) {
+                return;
+            }
             Node n = Node.getTree(s);
             if (was.contains(n)) return;
             was.add(n);
             _res.a.add(s);
         };
+    }
+
+    static public void addAToA(HashSet<Node> was, Input res, Node a) {
+        Consumer<String> add = makeAdd(was, res);
         add.accept(f("A->A->A", a));
         add.accept(f("(A->A->A)->(A->(A->A)->A)->(A->A)", a));
         add.accept(f("(A->(A->A)->A)->(A->A)", a));
@@ -35,24 +42,14 @@ public class Theorems {
     }
 
     static public void addDeductHypothesis(HashSet<Node> was, Input res, Node a, Node h) {
-        Consumer<String> add = s -> {
-            Node n = Node.getTree(s);
-            if (was.contains(n)) return;
-            was.add(n);
-            res.a.add(s);
-        };
+        Consumer<String> add = makeAdd(was, res);
         add.accept(f("A", h));
         add.accept(f("A->B->A", h, a));
         add.accept(f("A->B", a, h));
     }
 
     static public void addDeductImpl(HashSet<Node> was, Input res, Node a, Node hj, Node hi) {
-        Consumer<String> add = s -> {
-            Node n = Node.getTree(s);
-            if (was.contains(n)) return;
-            was.add(n);
-            res.a.add(s);
-        };
+        Consumer<String> add = makeAdd(was, res);
         add.accept(f("(A->B)->(A->B->C)->(A->C)", a, hj, hi));
         add.accept(f("(A->B->C)->(A->C)", a, hj, hi));
         add.accept(f("A->B", a, hi));

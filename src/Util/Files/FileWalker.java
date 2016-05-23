@@ -14,6 +14,8 @@ import java.util.function.Function;
  * Created by izban on 23.05.2016.
  */
 public class FileWalker {
+    public static String curFile;
+
     public static void fileWalk(String spath, Function<ArrayList<String>, String> action) throws IOException {
         Path path = Paths.get(spath);
         Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
@@ -27,9 +29,14 @@ public class FileWalker {
                 ArrayList<String> a = new ArrayList<>();
                 br.lines().forEach(a::add);
                 br.close();
-                BufferedWriter bw = new BufferedWriter(new FileWriter(new File(f + ".out")));
-                System.err.print(f + ".in: ");
+                String was = curFile;
+                curFile = f + ".in";
                 String res = action.apply(a);
+                curFile = was;
+                if (res == null) {
+                    return FileVisitResult.CONTINUE;
+                }
+                BufferedWriter bw = new BufferedWriter(new FileWriter(new File(f + ".out")));
                 bw.write(res);
                 bw.close();
                 return FileVisitResult.CONTINUE;

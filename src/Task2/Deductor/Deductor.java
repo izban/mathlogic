@@ -2,18 +2,16 @@ package Task2.Deductor;
 
 import Task1.Checker.*;
 import Util.Constants.Rules;
-import Util.Hash.Hash;
 import Util.Parser.Parser;
 import Util.Tree.Node;
 import Util.Tree.NodeImpl;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import static Util.Constants.StringConstants.MP;
-import static Util.Constants.StringConstants.axiomes;
+import static Util.Constants.StringConstants.AXIOMES;
+import static Util.Simplificator.Simplificator.simplify;
 
 /**
  * Created by izban on 23.05.2016.
@@ -33,7 +31,7 @@ public class Deductor {
             if (n.equals(a)) {
                 Theorems.addAToA(was, res, a);
             } else
-            if (proved.a.get(i).annotation.startsWith(Rules.hypothesis()) || proved.a.get(i).annotation.startsWith(axiomes)) {
+            if (proved.a.get(i).annotation.startsWith(Rules.hypothesis()) || proved.a.get(i).annotation.startsWith(AXIOMES)) {
                 Theorems.addDeductHypothesis(was, res, a, n);
             } else
             if (proved.a.get(i).annotation.startsWith(MP)) {
@@ -41,10 +39,11 @@ public class Deductor {
                 Node hj = Node.getTree(proved.a.get(o.getKey() - 1).expr);
                 Theorems.addDeductImpl(was, res, a, hj, n);
             } else {
+                System.err.println(proved.a.get(i).annotation);
                 throw new AssertionError();
             }
         }
 
-        return res;
+        return simplify(res);
     }
 }

@@ -26,4 +26,8 @@ public class NodeVariable extends Node {
     protected Integer hashThis() {
         return name.hashCode();
     }
+
+    public boolean calcValue(boolean... a) {
+        throw new IllegalStateException();
+    }
 }
