@@ -1,6 +1,7 @@
 package Util.Tree;
 
 import Util.Hash.Hash;
+import Util.Parser.Parser;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,10 @@ public abstract class Node {
     public Node children[];
     public abstract NodeType type();
     private int h;
+
+    static public Node getTree(String s) {
+        return new Parser().parseTree(s);
+    }
 
     @Override
     public int hashCode() {

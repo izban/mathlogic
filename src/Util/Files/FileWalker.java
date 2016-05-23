@@ -1,7 +1,6 @@
-package Task1;
+package Util.Files;
 
 import Task1.Checker.Checker;
-import Task1.Checker.Header;
 import Task1.Checker.Input;
 import Task1.Checker.Output;
 
@@ -9,13 +8,14 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.function.Function;
 
 /**
- * Created by Asus-dns on 21.05.2016.
+ * Created by izban on 23.05.2016.
  */
-public class Main {
-    public static void main(String[] args) throws IOException {
-        Path path = Paths.get("tests");
+public class FileWalker {
+    public static void fileWalk(String spath, Function<ArrayList<String>, String> action) throws IOException {
+        Path path = Paths.get(spath);
         Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -24,19 +24,14 @@ public class Main {
                 }
                 String f = file.toString().replaceAll(".in", "");
                 BufferedReader br = new BufferedReader(new FileReader(new File(f + ".in")));
-                Input input = new Input();
                 ArrayList<String> a = new ArrayList<>();
-                br.lines().forEach(input.a::add);
+                br.lines().forEach(a::add);
                 br.close();
-                if (input.a.get(0).contains("|-")) {
-                    input.header = new Header(input.a.get(0));
-                    input.a.remove(0);
-                }
-                Output output = new Checker().check(input);
                 BufferedWriter bw = new BufferedWriter(new FileWriter(new File(f + ".out")));
-                bw.write(output.toString());
+                System.err.print(f + ".in: ");
+                String res = action.apply(a);
+                bw.write(res);
                 bw.close();
-                System.err.println(f + ".in: " + output.ok);
                 return FileVisitResult.CONTINUE;
             }
         });

@@ -11,8 +11,28 @@ public class Input {
 
     public Input() {}
 
+    public Input(ArrayList<String> a) {
+        if (a.get(0).contains("|-")) {
+            header = new Header(a.get(0));
+            a.remove(0);
+        }
+        this.a = a;
+    }
+
     Input(Header header, ArrayList<String> a) {
         this.header = header;
         this.a = a;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        if (header != null) {
+            res.append(header.toString()).append("\r\n");
+        }
+        for (String anA : a) {
+            res.append(anA).append("\r\n");
+        }
+        return res.toString();
     }
 }

@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by izban on 21.05.2016.
  */
 public class Header {
-    ArrayList<String> assumptions;
-    private String toProve;
+    public ArrayList<String> assumptions;
+    public String toProve;
 
     Header() {}
     public Header(String s) {
@@ -26,10 +26,16 @@ public class Header {
                     assumptions.add(cur.toString());
                 }
                 cur = new StringBuilder();
+                if (c == '|') i++;
             } else {
                 cur.append(c);
             }
         }
+    }
+
+    public Header(Header header) {
+        assumptions = new ArrayList<>(header.assumptions);
+        toProve = header.toProve;
     }
 
     @Override
