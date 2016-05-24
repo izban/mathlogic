@@ -51,7 +51,7 @@ public class GathererProofs {
                         input.header = new Header(name);
                     }
                     input.a = proofs.get(name);
-                    assert new Checker().check(input).ok;
+                    if (!new Checker().check(input).ok) throw new AssertionError();
                 }
                 return null;
             });

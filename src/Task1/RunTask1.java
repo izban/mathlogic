@@ -10,6 +10,7 @@ import java.io.*;
 
 
 import static Util.Files.FileWalker.curFile;
+import static Util.Simplificator.Simplificator.simplify;
 
 /**
  * Created by izban on 21.05.2016.
