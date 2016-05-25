@@ -17,7 +17,7 @@ public class RunTask1 {
     public static void main(String[] args) throws IOException {
         FileWalker.fileWalk("tests/Task1", a -> {
             Input input = new Input(a);
-            Output output = new Checker().check(input);
+            Output output = new Checker().check(input, false);
             System.err.println(curFile + ": " + output.ok);
             return output.toString();
         });

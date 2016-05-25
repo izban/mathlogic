@@ -18,7 +18,7 @@ public class RunTask2 {
         FileWalker.fileWalk("tests/Task2", a -> {
             Input input = new Input(a);
             Input output = new Deductor().deduce(input);
-            Output proved = new Checker().check(output);
+            Output proved = new Checker().check(output, true);
             System.err.println(curFile + ": " + proved.ok);
             StringBuilder res = new StringBuilder();
             res.append(output.toString());

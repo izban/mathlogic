@@ -9,8 +9,7 @@ import javafx.util.Pair;
 
 import java.util.HashSet;
 
-import static Task4.Util.Constants.StringConstants.MP;
-import static Task4.Util.Constants.StringConstants.AXIOMES;
+import static Task4.Util.Constants.StringConstants.*;
 import static Task4.Util.Simplificator.Simplificator.simplify;
 
 /**
@@ -18,7 +17,14 @@ import static Task4.Util.Simplificator.Simplificator.simplify;
  */
 public class Deductor {
     public Input deduce(Input input) {
-        Output proved = new Checker().check(input);
+        Output proved = new Checker().check(input, true);
+        if (!proved.ok) {
+            Input res = new Input();
+            res.a.add(proved.a.get(0).toString());
+            return res;
+        }
+
+        if (input.header.assumptions.isEmpty()) return input;
 
         Input res = new Input();
         res.header = new Header(input.header);
@@ -30,16 +36,26 @@ public class Deductor {
             Node n = Node.getTree(proved.a.get(i).expr);
             if (n.equals(a)) {
                 Theorems.addAToA(was, res, a);
-            } else
-            if (proved.a.get(i).annotation.startsWith(Rules.hypothesis()) || proved.a.get(i).annotation.startsWith(AXIOMES)) {
+            } else if (proved.a.get(i).annotation.startsWith(Rules.hypothesis()) || proved.a.get(i).annotation.startsWith(AXIOMES)) {
                 Theorems.addDeductHypothesis(was, res, a, n);
-            } else
-            if (proved.a.get(i).annotation.startsWith(MP)) {
+            } else if (proved.a.get(i).annotation.startsWith(MP)) {
                 Pair<Integer, Integer> o = Rules.unMP(proved.a.get(i).annotation);
                 Node hj = Node.getTree(proved.a.get(o.getKey() - 1).expr);
                 Theorems.addDeductImpl(was, res, a, hj, n);
+            } else if (proved.a.get(i).annotation.startsWith(FORALL)) {
+                Node t = Node.getTree(input.a.get(i));
+                String x = t.children[1].children[0].toString();
+                Node g = t.children[1].children[1];
+                Node f = t.children[0];
+                Theorems.addDeductForall(was, res, a, f, g, x);
+            } else if (proved.a.get(i).annotation.startsWith(EXIST)) {
+                Node t = Node.getTree(input.a.get(i));
+                String x = t.children[0].children[0].toString();
+                Node f = t.children[0].children[1];
+                Node g = t.children[1];
+                Theorems.addDeductExist(was, res, a, f, g, x);
             } else {
-                System.err.println(proved.a.get(i).annotation);
+                //System.err.println(proved.a.get(i).annotation);
                 throw new AssertionError();
             }
         }

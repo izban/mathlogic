@@ -13,6 +13,6 @@ public abstract class NodeQuantor extends Node {
 
     @Override
     public String toString() {
-        return type().toString() + children[0].toString() + children[1].toString();
+        return type().toString() + children[0].toString() + "(" + children[1].toString() + ")";
     }
 }

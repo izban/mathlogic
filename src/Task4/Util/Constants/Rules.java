@@ -30,8 +30,16 @@ public class Rules {
         return MP + i + ", " + j;
     }
 
+    public static int unForall(String s) {
+        return Integer.parseInt(s.substring(FORALL.length() + 1));
+    }
+
     public static String ruleForall(int i) {
         return FORALL + " " + i;
+    }
+
+    public static int unExist(String s) {
+        return Integer.parseInt(s.substring(EXIST.length() + 1));
     }
 
     public static String ruleExist(int i) {

@@ -17,6 +17,6 @@ public class NodeInc extends Node {
 
     @Override
     public String toString() {
-        return children[0].toString() + type().toString();
+        return "(" + children[0].toString() + ")" + type().toString();
     }
 }

@@ -94,7 +94,7 @@ public class Parser {
             Token cur = Token.type(lexer.curToken());
             if (cur == Token.MULTIPLY) {
                 lexer.nextToken();
-                res = new NodeMultiply(res, parseSummand());
+                res = new NodeMultiply(res, parseMultiplier());
                 continue;
             }
             break;
@@ -108,7 +108,7 @@ public class Parser {
             Token cur = Token.type(lexer.curToken());
             if (cur == Token.ADD) {
                 lexer.nextToken();
-                res = new NodeAdd(res, parseTerm());
+                res = new NodeAdd(res, parseSummand());
                 continue;
             }
             break;

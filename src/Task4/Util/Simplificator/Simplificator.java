@@ -3,12 +3,17 @@ package Task4.Util.Simplificator;
 import Task4.Checker.Checker;
 import Task4.Checker.Input;
 import Task4.Checker.Output;
+import Task4.Util.Tree.Node;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import static Task4.Util.Constants.Rules.unExist;
+import static Task4.Util.Constants.Rules.unForall;
 import static Task4.Util.Constants.Rules.unMP;
+import static Task4.Util.Constants.StringConstants.EXIST;
+import static Task4.Util.Constants.StringConstants.FORALL;
 import static Task4.Util.Constants.StringConstants.MP;
 
 /**
@@ -16,15 +21,16 @@ import static Task4.Util.Constants.StringConstants.MP;
  */
 public class Simplificator {
     static public Input simplify(Input input) {
+        return input; /*
         if (input.header != null) {
-            while (!input.a.isEmpty() && !input.a.get(input.a.size() - 1).equals(input.header.toProve)) {
+            while (!input.a.isEmpty() && !Node.getTree(input.a.get(input.a.size() - 1)).equals(Node.getTree(input.header.toProve))) {
                 input.a.remove(input.a.size() - 1);
             }
             if (input.a.isEmpty()) {
                 throw new AssertionError("not proved");
             }
         }
-        Output output = new Checker().check(input);
+        Output output = new Checker().check(input, false);
         boolean need[] = new boolean[output.a.size()];
         need[need.length - 1] = true;
         int cnt = 0;
@@ -36,6 +42,12 @@ public class Simplificator {
                 Pair<Integer, Integer> o = unMP(output.a.get(i).annotation);
                 need[o.getKey() - 1] = true;
                 need[o.getValue() - 1] = true;
+            }
+            if (output.a.get(i).annotation.startsWith(FORALL)) {
+                need[unForall(output.a.get(i).annotation) - 1] = true;
+            }
+            if (output.a.get(i).annotation.startsWith(EXIST)) {
+                need[unExist(output.a.get(i).annotation) - 1] = true;
             }
         }
         ArrayList<String> res = new ArrayList<>();
@@ -50,6 +62,6 @@ public class Simplificator {
         Input ans = new Input();
         ans.header = input.header;
         ans.a = res;
-        return ans;
+        return ans;*/
     }
 }

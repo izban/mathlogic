@@ -24,7 +24,9 @@ public class Header {
                 if (i + 1 == s.length()) {
                     toProve = cur.toString();
                 } else {
-                    assumptions.add(cur.toString());
+                    if (!cur.toString().isEmpty()) {
+                        assumptions.add(cur.toString());
+                    }
                 }
                 cur = new StringBuilder();
                 if (c == '|') i++;

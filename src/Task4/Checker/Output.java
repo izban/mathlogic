@@ -2,6 +2,8 @@ package Task4.Checker;
 
 import java.util.ArrayList;
 
+import static Task4.Util.Constants.StringConstants.NOTPROVED;
+
 /**
  * Created by izban on 21.05.2016.
  */
@@ -20,5 +22,14 @@ public class Output {
             str.append(anA.toString()).append("\r\n");
         }
         return str.toString();
+    }
+
+    public String firstError() {
+        for (int i = 0; i < a.size(); i++) {
+            if (a.get(i).annotation.startsWith(NOTPROVED)) {
+                return a.get(i).toString();
+            }
+        }
+        throw new AssertionError();
     }
 }

@@ -70,7 +70,9 @@ public class Checker {
 
         if (input.header != null) {
             for (String p : input.header.assumptions) {
-                assumptions.add(new Parser().parseTree(p));
+                if (!p.isEmpty()) {
+                    assumptions.add(new Parser().parseTree(p));
+                }
             }
         }
 

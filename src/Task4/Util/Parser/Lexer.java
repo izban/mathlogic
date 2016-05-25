@@ -21,7 +21,7 @@ class Lexer {
             }
             if (s.charAt(i) == ')') {
                 if (stack.isEmpty()) {
-                    System.err.println(s);
+                    //System.err.println(s);
                     throw new AssertionError();
                 }
                 int j = i + 1;

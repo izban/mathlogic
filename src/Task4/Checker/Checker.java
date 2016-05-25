@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import static Task4.Checker.Axioms.trees;
+import static Task4.Util.Constants.StringConstants.NOTPROVED;
 
 /**
  * Created by izban on 21.05.2016.
@@ -157,7 +158,7 @@ public class Checker {
         return matched2.iterator().next().equals(t);
     }
 
-    public Output check(Input input) {
+    public Output check(Input input, boolean needCheckFree) {
         Output res = new Output();
 
         free.clear();
@@ -166,7 +167,7 @@ public class Checker {
             for (String p : input.header.assumptions) {
                 assumptions.add(new Parser().parseTree(p));
             }
-            if (!input.header.assumptions.isEmpty()) {
+            if (!input.header.assumptions.isEmpty() && needCheckFree) {
                 findFree(Node.getTree(input.header.assumptions.get(input.header.assumptions.size() - 1)));
             }
             freeAssumption = free;
@@ -178,25 +179,22 @@ public class Checker {
             try {
                 node = new Parser().parseTree(input.a.get(i));
             } catch (AssertionError e) {
-                Output bad = new Output();
-                bad.ok = false;
-                bad.a.add(new Comment(0, input.a.get(i), "fail to parse"));
-                return bad;
-            }
-            if (assumptions.contains(node)) {
-                Comment c = new Comment(i + 1, input.a.get(i), Rules.hypothesis());
-                res.a.add(c);
-                addProven(node, i + 1);
-                continue;
-            }
-            if (proven.containsKey(node)) {
-                Comment c = new Comment(i + 1, input.a.get(i), proven.get(node));
-                res.a.add(c);
-                addProven(node, i + 1);
+                res.ok = false;
+                res.a.add(new Comment(i + 1, input.a.get(i), NOTPROVED));
                 continue;
             }
             boolean proved = false;
-            for (int k = 0; k < Axioms.trees.size(); k++) {
+            if (!proved && assumptions.contains(node)) {
+                Comment c = new Comment(i + 1, input.a.get(i), Rules.hypothesis());
+                res.a.add(c);
+                proved = true;
+            }
+            if (!proved && proven.containsKey(node)) {
+                Comment c = new Comment(i + 1, input.a.get(i), proven.get(node));
+                res.a.add(c);
+                proved = true;
+            }
+            if (!proved) for (int k = 0; k < Axioms.trees.size(); k++) {
                 Node axiom = Axioms.trees.get(k);
                 matched = new HashMap<>();
                 boolean ok = matchTrees(axiom, node);
@@ -309,8 +307,11 @@ public class Checker {
 
             if (!proved) {
                 Comment c = new Comment(i + 1, input.a.get(i), Rules.notProved());
+                //res.a.clear();
                 res.a.add(c);
                 res.ok = false;
+                //return res;
+
             } else {
                 addProven(node, i + 1);
             }
