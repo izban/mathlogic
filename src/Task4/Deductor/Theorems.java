@@ -14,12 +14,12 @@ import static Task4.Deductor.GathererProofs.getProof;
 /**
  * Created by izban on 23.05.2016.
  */
-public class Theorems {
+class Theorems {
     static private String f(String s, Node... a) {
         return ExpressionFormatter.format(s, a);
     }
 
-    static Consumer<String> makeAdd(HashSet<Node> was, Input _res) {
+    private static Consumer<String> makeAdd(HashSet<Node> was, Input _res) {
         return s -> {
             if (!_res.a.isEmpty() && Node.getTree(_res.header.toProve).equals(Node.getTree(_res.a.get(_res.a.size() - 1)))) {
                 return;

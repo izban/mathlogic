@@ -4,7 +4,7 @@ package Task4.Checker;
  * Created by izban on 21.05.2016.
  */
 public class Comment {
-    public int stringID;
+    private int stringID;
     public String expr;
     public String annotation;
 

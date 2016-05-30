@@ -31,7 +31,7 @@ public abstract class Node {
     @Override
     public abstract String toString();
 
-    protected Integer hashThis() {
+    Integer hashThis() {
         return type().ordinal();
     }
 

@@ -9,8 +9,8 @@ import java.util.HashMap;
 public class Hash {
     Hash() {}
 
-    private static HashMap<ArrayList<Integer>, Integer> map = new HashMap<>();
-    private static ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
+    private static final HashMap<ArrayList<Integer>, Integer> map = new HashMap<>();
+    private static final ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
 
     public static int getHash(ArrayList<Integer> a) {
         if (map.containsKey(a)) {

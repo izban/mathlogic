@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by izban on 21.05.2016.
  */
 public class Output {
-    public Header header = null;
-    public ArrayList<Comment> a = new ArrayList<>();
+    private final Header header = null;
+    public final ArrayList<Comment> a = new ArrayList<>();
     public boolean ok = true;
 
     @Override

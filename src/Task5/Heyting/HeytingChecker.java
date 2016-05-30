@@ -5,8 +5,8 @@ import Task1_3.Util.Tree.*;
 /**
  * Created by izban on 29.05.2016.
  */
-public class HeytingChecker {
-    IntervalSet dfs(Node t, Heyting m) {
+class HeytingChecker {
+    private IntervalSet dfs(Node t, Heyting m) {
         if (t instanceof NodeVariable) {
             return m.mp.get(t.toString());
         } else if (t instanceof NodeOr) {

@@ -9,8 +9,8 @@ import java.util.ArrayList;
  * Created by izban on 21.05.2016.
  */
 class Axioms {
-    private static ArrayList<String> axioms = new ArrayList<>();
-    static ArrayList<Node> trees = new ArrayList<>();
+    private static final ArrayList<String> axioms = new ArrayList<>();
+    static final ArrayList<Node> trees = new ArrayList<>();
 
     static {
         axioms.add("A->B->A");

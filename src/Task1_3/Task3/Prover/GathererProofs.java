@@ -13,8 +13,8 @@ import java.util.HashMap;
 /**
  * Created by izban on 23.05.2016.
  */
-public class GathererProofs {
-    static HashMap<String, ArrayList<String>> proofs = new HashMap<>();
+class GathererProofs {
+    private static final HashMap<String, ArrayList<String>> proofs = new HashMap<>();
 
     static public ArrayList<String> getProof(String theorem, String... formulas) {
         ArrayList<String> res = new ArrayList<>();

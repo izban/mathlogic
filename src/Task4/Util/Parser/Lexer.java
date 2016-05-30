@@ -6,9 +6,9 @@ import java.util.ArrayList;
  * Created by izban on 21.05.2016.
  */
 class Lexer {
-    private String s;
+    private final String s;
     private int it;
-    private ArrayList<Character> pair = new ArrayList<>();
+    private final ArrayList<Character> pair = new ArrayList<>();
 
     Lexer(String s) {
         this.s = s.replace(" ", "");

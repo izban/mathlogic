@@ -9,9 +9,10 @@ import java.util.HashSet;
  * Created by izban on 29.05.2016.
  */
 public class KripkeModel {
-    public int worlds, variables;
-    public ArrayList<Integer> e[];        // <= relation between worlds, worlds are int
-    public boolean forced[][];            // set of true variables in the world
+    public final int worlds;
+    public final int variables;
+    public final ArrayList<Integer>[] e;        // <= relation between worlds, worlds are int
+    public final boolean[][] forced;            // set of true variables in the world
     public String variableNames[];
 
     KripkeModel(int worlds, int variables) {

@@ -4,7 +4,7 @@ package Task1_3.Util.Tree;
  * Created by izban on 21.05.2016.
  */
 public abstract class NodeUnary extends Node {
-    public NodeUnary() {}
+    NodeUnary() {}
 
     NodeUnary(Node l) {
         children = new Node[1];

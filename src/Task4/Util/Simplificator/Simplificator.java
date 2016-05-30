@@ -23,7 +23,7 @@ public class Simplificator {
     static public Input simplify(Input input) {
         return input; /*
         if (input.header != null) {
-            while (!input.a.isEmpty() && !Node.getTree(input.a.get(input.a.size() - 1)).equals(Node.getTree(input.header.toProve))) {
+            while (!input.a.isEmpty() && !Tree.getTree(input.a.get(input.a.size() - 1)).equals(Tree.getTree(input.header.toProve))) {
                 input.a.remove(input.a.size() - 1);
             }
             if (input.a.isEmpty()) {

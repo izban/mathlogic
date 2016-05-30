@@ -4,7 +4,7 @@ package Task4.Util.Tree;
  * Created by izban on 21.05.2016.
  */
 public class NodeVariable extends Node {
-    private String name;
+    private final String name;
 
     public NodeVariable(String s) {
         this.name = s;

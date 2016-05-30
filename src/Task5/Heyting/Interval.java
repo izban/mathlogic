@@ -3,9 +3,11 @@ package Task5.Heyting;
 /**
  * Created by izban on 29.05.2016.
  */
-public class Interval implements Comparable<Interval> {
-    int left, right;
-    boolean incL, incR;
+class Interval implements Comparable<Interval> {
+    final int left;
+    final int right;
+    final boolean incL;
+    final boolean incR;
 
     Interval(int left, boolean incL, int right, boolean incR) {
         this.left = left;

@@ -4,7 +4,7 @@ package Task4.Util.Tree;
  * Created by izban on 25.05.2016.
  */
 public class NodeFunction extends Node {
-    private String name;
+    private final String name;
 
     public NodeFunction(String s) {
         this.name = s;

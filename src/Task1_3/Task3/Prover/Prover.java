@@ -22,12 +22,12 @@ import static Task1_3.Util.Simplificator.Simplificator.simplify;
  * Created by izban on 23.05.2016.
  */
 public class Prover {
-    HashSet<String> set = new HashSet<>();
-    HashMap<String, Boolean> values = new HashMap<>();
-    String variables[];
-    Node t;
+    private final HashSet<String> set = new HashSet<>();
+    private final HashMap<String, Boolean> values = new HashMap<>();
+    private String[] variables;
+    private Node t;
 
-    void dfs1(Node v) {
+    private void dfs1(Node v) {
         for (int i = 0; i < v.children.length; i++) {
             dfs1(v.children[i]);
         }
@@ -36,7 +36,7 @@ public class Prover {
         }
     }
 
-    boolean dfs2(Node v) {
+    private boolean dfs2(Node v) {
         if (v.type() == NodeType.VARIABLE) {
             return values.get(v.toString());
         }
@@ -47,7 +47,7 @@ public class Prover {
         return v.calcValue(a);
     }
 
-    Pair<ArrayList<String>, Boolean> makeStructuralProof(Node t) {
+    private Pair<ArrayList<String>, Boolean> makeStructuralProof(Node t) {
         if (t.type().equals(NodeType.VARIABLE)) {
             ArrayList<String> a = new ArrayList<>();
             a.add((values.get(t.toString()) ? "" : "!") + t.toString());
@@ -91,7 +91,7 @@ public class Prover {
         return new Pair<>(res1, res2);
     }
 
-    Input getProof(int cur) {
+    private Input getProof(int cur) {
         if (cur == variables.length) {
             Input res = new Input();
             res.header = new Header();

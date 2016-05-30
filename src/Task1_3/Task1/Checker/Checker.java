@@ -18,10 +18,10 @@ import static Task1_3.Task1.Checker.Axioms.trees;
  */
 public class Checker {
     private HashMap<String, ArrayList<Node>> matched = new HashMap<>();
-    private HashSet<Node> assumptions = new HashSet<>();
-    private HashMap<Node, String> proven = new HashMap<>();
-    private HashMap<Node, Integer> exprID = new HashMap<>();
-    private HashMap<Node, ArrayList<Pair<Node, Integer>>> lazyProve = new HashMap<>();
+    private final HashSet<Node> assumptions = new HashSet<>();
+    private final HashMap<Node, String> proven = new HashMap<>();
+    private final HashMap<Node, Integer> exprID = new HashMap<>();
+    private final HashMap<Node, ArrayList<Pair<Node, Integer>>> lazyProve = new HashMap<>();
 
     private boolean matchTrees(Node a, Node b) {
         if (a instanceof NodeVariable) {

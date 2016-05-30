@@ -14,7 +14,7 @@ import static Task1_3.Util.Simplificator.Simplificator.simplify;
 /**
  * Created by izban on 23.05.2016.
  */
-public class Theorems {
+class Theorems {
     static private String f(String s, String... a) {
         return ExpressionFormatter.format(s, a);
     }
@@ -22,7 +22,7 @@ public class Theorems {
         return ExpressionFormatter.format(s, a);
     }
 
-    public static ArrayList<String> aOrNotA(Node t) {
+    private static ArrayList<String> aOrNotA(Node t) {
         return getProof("A|!A", t.toString());
     }
 

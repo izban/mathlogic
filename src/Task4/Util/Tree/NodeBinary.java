@@ -4,7 +4,7 @@ package Task4.Util.Tree;
  * Created by izban on 21.05.2016.
  */
 public abstract class NodeBinary extends Node {
-    public NodeBinary() {}
+    NodeBinary() {}
 
     NodeBinary(Node l, Node r) {
         children = new Node[2];

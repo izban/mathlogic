@@ -6,7 +6,7 @@ import java.util.HashMap;
  * Created by izban on 29.05.2016.
  */
 public class Heyting {
-    HashMap<String, IntervalSet> mp = new HashMap<>();
+    final HashMap<String, IntervalSet> mp = new HashMap<>();
 
     @Override
     public String toString() {

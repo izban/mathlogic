@@ -19,15 +19,15 @@ public class KripkeModelBuilder {
 
     public KripkeModelBuilder() {}
 
-    int worlds;
-    KripkeModel cur;
-    HashSet<String> variables = new HashSet<>();
-    String variables_list[];
-    HashMap<String, Integer> variable_id = new HashMap<>();
-    Node expression;
-    HashMap<Integer, HashMap<Node, Boolean>> mp;
+    private int worlds;
+    private KripkeModel cur;
+    private final HashSet<String> variables = new HashSet<>();
+    private String[] variables_list;
+    private final HashMap<String, Integer> variable_id = new HashMap<>();
+    private Node expression;
+    private HashMap<Integer, HashMap<Node, Boolean>> mp;
 
-    boolean getValue(int world, Node expr) {
+    private boolean getValue(int world, Node expr) {
         if (mp.containsKey(world) && mp.get(world).containsKey(expr)) {
             return mp.get(world).get(expr);
         }
@@ -59,7 +59,7 @@ public class KripkeModelBuilder {
         return mp.get(world).get(expr);
     }
 
-    KripkeModel buildVariables(int x) {
+    private KripkeModel buildVariables(int x) {
         if (x == worlds) {
             mp = new HashMap<>();
             if (!getValue(0, expression)) {
@@ -100,7 +100,7 @@ public class KripkeModelBuilder {
         }
     }
 
-    KripkeModel buildWorlds(int x) {
+    private KripkeModel buildWorlds(int x) {
         if (x == worlds) {
             return buildVariables(0);
         } else {
@@ -136,7 +136,7 @@ public class KripkeModelBuilder {
         }
     }
 
-    void getVariables(Node t) {
+    private void getVariables(Node t) {
         if (t instanceof Task1_3.Util.Tree.NodeVariable) {
             variables.add(t.toString());
         }

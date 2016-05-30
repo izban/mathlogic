@@ -11,10 +11,10 @@ public class IntervalSet {
     ArrayList<Interval> a = new ArrayList<>();
 
     IntervalSet() {}
-    IntervalSet(ArrayList<Interval> a) {
+    private IntervalSet(ArrayList<Interval> a) {
         this.a = new ArrayList<>(a);
     }
-    IntervalSet(IntervalSet o) {
+    private IntervalSet(IntervalSet o) {
         this.a = new ArrayList<>(o.a);
     }
 

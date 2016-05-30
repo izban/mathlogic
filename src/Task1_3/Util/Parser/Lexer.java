@@ -4,7 +4,7 @@ package Task1_3.Util.Parser;
  * Created by izban on 21.05.2016.
  */
 class Lexer {
-    private String s;
+    private final String s;
     private int it;
 
     Lexer(String s) {

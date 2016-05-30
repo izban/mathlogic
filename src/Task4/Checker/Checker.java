@@ -18,10 +18,10 @@ import static Task4.Util.Constants.StringConstants.NOTPROVED;
  */
 public class Checker {
     private HashMap<String, ArrayList<Node>> matched = new HashMap<>();
-    private HashSet<Node> assumptions = new HashSet<>();
-    private HashMap<Node, String> proven = new HashMap<>();
-    private HashMap<Node, Integer> exprID = new HashMap<>();
-    private HashMap<Node, ArrayList<Pair<Node, Integer>>> lazyProve = new HashMap<>();
+    private final HashSet<Node> assumptions = new HashSet<>();
+    private final HashMap<Node, String> proven = new HashMap<>();
+    private final HashMap<Node, Integer> exprID = new HashMap<>();
+    private final HashMap<Node, ArrayList<Pair<Node, Integer>>> lazyProve = new HashMap<>();
 
     private boolean matchTrees(Node a, Node b) {
         if (a instanceof NodeFunction) {
@@ -47,8 +47,8 @@ public class Checker {
         return ok;
     }
 
-    HashSet<Node> matched2 = new HashSet<>();
-    HashSet<String> willBinded = new HashSet<>();
+    private final HashSet<Node> matched2 = new HashSet<>();
+    private final HashSet<String> willBinded = new HashSet<>();
     // <if matched ok, was x or not>
     private Pair<Boolean, Boolean> matchTrees2(Node a, Node b, String x) {
         if (a instanceof NodeFunction) {
@@ -84,8 +84,8 @@ public class Checker {
         return new Pair<>(ok, was);
     }
 
-    HashMap<String, Integer> binded = new HashMap<>();
-    HashSet<String> free = new HashSet<>();
+    private final HashMap<String, Integer> binded = new HashMap<>();
+    private HashSet<String> free = new HashSet<>();
     private void findFree(Node v) {
         if (v instanceof NodeVariable) {
             String name = v.toString();
@@ -132,7 +132,7 @@ public class Checker {
         }
     }
 
-    boolean free(Node x, String s) {
+    private boolean free(Node x, String s) {
         if (x instanceof NodeVariable) {
             return s.equals(x.toString()) && (!s.isEmpty() && Character.isLowerCase(s.charAt(0)));
         }
@@ -150,7 +150,7 @@ public class Checker {
     }
 
     // f[x := t] == g
-    boolean equal(Node f, Node g, String x, Node t) {
+    private boolean equal(Node f, Node g, String x, Node t) {
         matched2.clear();
         willBinded.clear();
         if (!matchTrees2(f, g, x).getKey()) return false;
