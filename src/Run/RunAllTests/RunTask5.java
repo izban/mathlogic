@@ -1,4 +1,4 @@
-package Task5;
+package Run.RunAllTests;
 
 import Task1_3.Task1.Checker.Input;
 import Task1_3.Util.Files.FileWalker;

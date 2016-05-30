@@ -1,4 +1,4 @@
-package Task4.Run;
+package Run.RunAllTests;
 
 import Task4.Checker.Checker;
 import Task4.Checker.Input;
@@ -10,7 +10,6 @@ import Task4.Util.Tree.Node;
 import java.io.IOException;
 
 import static Task4.Util.Files.FileWalker.curFile;
-import static Task4.Util.Files.FileWalker.fileWalk;
 
 /**
  * Created by izban on 25.05.2016.

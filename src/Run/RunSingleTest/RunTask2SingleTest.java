@@ -1,4 +1,4 @@
-package Task1_3.Task2;
+package Run.RunSingleTest;
 
 import Task1_3.Task1.Checker.Checker;
 import Task1_3.Task1.Checker.Input;

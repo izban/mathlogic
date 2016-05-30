@@ -1,10 +1,13 @@
-package Task5;
+package Run.RunSingleTest;
 
 import Task1_3.Task1.Checker.Checker;
 import Task1_3.Task1.Checker.Input;
 import Task1_3.Task1.Checker.Output;
+import Task1_3.Util.Tree.Node;
 import Task5.Heyting.Heyting;
 import Task5.Heyting.HeytingSolver;
+import Task5.Kripke.KripkeModel;
+import Task5.Kripke.KripkeModelBuilder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +22,7 @@ public class RunTask5SingleTest {
         while (in.hasNextLine()) {
             a.add(in.nextLine());
         }
-        Heyting output = new HeytingSolver().solve(a.get(0));
+        KripkeModel output = new KripkeModelBuilder().getCountertest(Node.getTree(a.get(0)));
         System.out.println(output.toString());
     }
 }

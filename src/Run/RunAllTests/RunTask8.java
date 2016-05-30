@@ -1,4 +1,4 @@
-package Task8;
+package Run.RunAllTests;
 
 import Task1_3.Util.Files.FileWalker;
 import Task8.Ordinal.OrdinalChecker;
