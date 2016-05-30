@@ -90,4 +90,14 @@ public class IntervalSet {
     IntervalSet and(IntervalSet o) {
         return new IntervalSet(this).inv().or(o.inv()).inv();
     }
+
+    public IntervalSet interior() {
+        IntervalSet ans = new IntervalSet();
+        for (int i = 0; i < a.size(); i++) {
+            if (a.get(i).left != a.get(i).right) {
+                ans.a.add(new Interval(a.get(i).left, false, a.get(i).right, false));
+            }
+        }
+        return ans;
+    }
 }

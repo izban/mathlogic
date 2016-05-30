@@ -14,14 +14,15 @@ public class HeytingChecker {
         } else if (t instanceof NodeAnd) {
             return dfs(t.children[0], m).and(dfs(t.children[1], m));
         } else if (t instanceof NodeNot) {
-            return dfs(t.children[0], m).inv();
+            return dfs(t.children[0], m).inv().interior();
         } else if (t instanceof NodeImpl) {
-            return dfs(t.children[0], m).inv().or(dfs(t.children[1], m));
+            return dfs(t.children[0], m).inv().or(dfs(t.children[1], m)).interior();
         } else throw new AssertionError();
     }
 
     boolean checkTrue(Node t, Heyting m) {
         IntervalSet a = dfs(t, m);
+        System.err.println(a);
         return a.a.size() == 1 && a.a.get(0).equals(new Interval(Integer.MIN_VALUE, false, Integer.MAX_VALUE, false));
     }
 }

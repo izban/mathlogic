@@ -24,7 +24,7 @@ public class KripkeModel {
         }
     }
 
-    boolean isPath(int u, int v) {
+    public boolean isPath(int u, int v) {
         int n = worlds;
         boolean was[] = new boolean[n];
         int q[] = new int[n];
@@ -42,5 +42,26 @@ public class KripkeModel {
             }
         }
         return was[v];
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        res.append(worlds + " worlds\r\n");
+        for (int i = 0; i < worlds; i++) {
+            for (int j = 0; j < e[i].size(); j++) {
+                res.append(i + "<=" + e[i].get(j) + "\r\n");
+            }
+        }
+        for (int i = 0; i < worlds; i++) {
+            res.append("forced variables in " + i + ":");
+            for (int j = 0; j < variables; j++) {
+                if (forced[i][j]) {
+                    res.append(" " + variableNames[j]);
+                }
+            }
+            res.append("\n");
+        }
+        return res.toString();
     }
 }

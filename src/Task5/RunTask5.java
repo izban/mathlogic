@@ -2,9 +2,11 @@ package Task5;
 
 import Task1_3.Task1.Checker.Input;
 import Task1_3.Util.Files.FileWalker;
+import Task1_3.Util.Tree.Node;
 import Task5.Heyting.Heyting;
 import Task5.Heyting.HeytingSolver;
 import Task5.Kripke.KripkeModel;
+import Task5.Kripke.KripkeModelBuilder;
 
 import java.io.IOException;
 
@@ -17,7 +19,7 @@ public class RunTask5 {
     public static void main(String[] args) throws IOException {
         FileWalker.fileWalk("tests/Task5", a -> {
             Input input = new Input(a);
-            Heyting output = new HeytingSolver().solve(input.a.get(0));
+            KripkeModel output = new KripkeModelBuilder().getCountertest(Node.getTree(input.a.get(0)));
             System.err.println(curFile + ": ");
             String res = (output == null ? "Формула общезначима (наверное)" : output.toString());
             System.err.println(res);
