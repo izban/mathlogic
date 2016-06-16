@@ -1,23 +1,18 @@
 package Task5.Kripke;
 
-import Task1_3.Util.Tree.Node;
-import Task1_3.Util.Tree.NodeAnd;
-import Task1_3.Util.Tree.NodeNot;
-import Task1_3.Util.Tree.NodeOr;
-import Task1_3.Util.Tree.NodeImpl;
-import Task1_3.Util.Tree.NodeVariable;
+import Task1_3.Util.Tree.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- * Created by izban on 29.05.2016.
+ * Created by izban on 16.06.16.
  */
-public class KripkeModelBuilder {
+public class KripkeModelTreeBuilder {
     final private static int MAX_WORLDS = 7;
 
-    public KripkeModelBuilder() {}
+    public KripkeModelTreeBuilder() {}
 
     private int worlds;
     private KripkeModel cur;
@@ -63,10 +58,13 @@ public class KripkeModelBuilder {
         if (x == worlds) {
             mp = new HashMap<>();
             if (!getValue(0, expression)) {
+                mp = new HashMap<>();
+                getValue(0, expression);
                 return cur;
             }
             return null;
         } else {
+            for (int k = 0; k < cur.variables; k++) cur.forced[x][k] = false;
             for (int i = 0; i < x; i++) {
                 for (int j = 0; j < cur.e[i].size(); j++) {
                     if (cur.e[i].get(j) == x) {
@@ -111,6 +109,8 @@ public class KripkeModelBuilder {
                         a.add(i);
                     }
                 }
+                if (a.size() > 1) continue;
+                if (cur.e[a.get(0)].size() >= 2) continue;
                 boolean bad = false;
                 for (int i = 0; i < a.size(); i++) {
                     for (int j = 0; j < a.size(); j++) {
@@ -154,6 +154,7 @@ public class KripkeModelBuilder {
         }
         for (worlds = 1; worlds <= MAX_WORLDS; worlds++) {
             cur = new KripkeModel(worlds, variables.size());
+            //cur.e[0].add(1);
             KripkeModel m = buildWorlds(1);
             if (m != null) {
                 cur.variableNames = variables_list;
@@ -163,4 +164,5 @@ public class KripkeModelBuilder {
         // probably, there is no countertest
         return null;
     }
+
 }

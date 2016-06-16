@@ -22,7 +22,7 @@ class HeytingChecker {
 
     boolean checkTrue(Node t, Heyting m) {
         IntervalSet a = dfs(t, m);
-        System.err.println(a);
+        //System.err.println(a);
         return a.a.size() == 1 && a.a.get(0).equals(new Interval(Integer.MIN_VALUE, false, Integer.MAX_VALUE, false));
     }
 }
