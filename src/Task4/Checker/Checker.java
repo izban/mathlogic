@@ -1,10 +1,9 @@
 package Task4.Checker;
 
+import Common.Pair;
 import Task4.Util.Constants.Rules;
 import Task4.Util.Parser.Parser;
 import Task4.Util.Tree.*;
-import com.sun.deploy.security.ruleset.Rule;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;

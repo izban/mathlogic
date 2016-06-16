@@ -1,5 +1,6 @@
 package Task1_3.Task3.Prover;
 
+import Common.Pair;
 import Task1_3.Task1.Checker.Header;
 import Task1_3.Task1.Checker.Input;
 import Task1_3.Task2.Deductor.Deductor;
@@ -7,7 +8,6 @@ import Task1_3.Util.Tree.Node;
 import Task1_3.Util.Tree.NodeBinary;
 import Task1_3.Util.Tree.NodeType;
 import Task1_3.Util.Tree.NodeUnary;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;

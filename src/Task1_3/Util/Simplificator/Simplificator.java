@@ -1,9 +1,9 @@
 package Task1_3.Util.Simplificator;
 
+import Common.Pair;
 import Task1_3.Task1.Checker.Checker;
 import Task1_3.Task1.Checker.Input;
 import Task1_3.Task1.Checker.Output;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashSet;

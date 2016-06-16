@@ -1,6 +1,6 @@
 package Task1_3.Util.Constants;
 
-import javafx.util.Pair;
+import Common.Pair;
 
 import static Task1_3.Util.Constants.StringConstants.*;
 

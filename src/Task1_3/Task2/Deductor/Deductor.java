@@ -1,11 +1,11 @@
 package Task1_3.Task2.Deductor;
 
+import Common.Pair;
 import Task1_3.Task1.Checker.*;
 import Task1_3.Util.Constants.Rules;
 import Task1_3.Util.Parser.Parser;
 import Task1_3.Util.Tree.Node;
 import Task1_3.Util.Tree.NodeImpl;
-import javafx.util.Pair;
 
 import java.util.HashSet;
 

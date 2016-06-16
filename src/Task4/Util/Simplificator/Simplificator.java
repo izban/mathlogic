@@ -4,7 +4,6 @@ import Task4.Checker.Checker;
 import Task4.Checker.Input;
 import Task4.Checker.Output;
 import Task4.Util.Tree.Node;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashSet;
